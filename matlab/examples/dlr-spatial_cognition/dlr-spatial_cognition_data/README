@@ -1,0 +1,26 @@
+In the directories "dlr-spatial_cognition-[a-h]" you will find the data for each
+run. map.lines is the data set with line landmarks, map.circles for the circular
+landmarks. The format of the data set it documented in the file itself.
+
+
+For a complete documentation of the dataset have a look at the technical report
+included in the directory "techreport".
+
+in the "src" directory you will find some python code to import and display the
+data sets, which may be used for own derivations. We also added some additional
+code which we developed for ourselves, like a Levenberg-Marquardt Optimizer and
+EKF SLAM. They can also be used for your own works, if you like.
+
+The files robot.jpg and robot2.jpg give you an impression of the real robot
+and the scene.
+
+map.png is a real map of the building where the data set was recorded.
+The red line is the path the robot has driven throughout the experiment.
+
+The whole experiment took place in the labs from the DLR (Deutsches Zentrum
+für Luft- und Raumfahrt) on 2003/08/24. The experiment was used for the
+Ph.D. Thesis from Udo Frese on the treemap algorithm.
+
+Webpage: http://www.informatik.uni-bremen.de/agebv/en/DlrSpatialCognitionDataSet
+
+

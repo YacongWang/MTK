@@ -1,0 +1,33 @@
+# This file contains metric planar odometry and landmark observations with covariance.
+#  It is derived from the original odometry / image dataset by a circular landmark detection 
+#  algorithm. The original dataset as well as calibration and landmark detection code is
+#  available upon request.
+# 
+#  Format:
+#  The robot coordinate system is located in the robot's center with -Y pointing forward and X pointing right.
+#  STEP <image.ppm> <dX> <dY> <dPhi> <cXX> <cXY> <cYY> <cXPhi> <cYPhi> <cPhiPhi>
+#  A single step of movement with odometry information.
+#  <image.ppm> is the filename of the image
+#  taken AFTER the odometry step. <dX>, <dY>, <dPhi> is the location of the robot after movement
+#  in the coordinate system of the robot before moving. Units are meter and radian.
+#  {{cXX,cXY,cXPhi},{cXY,cYY,cYPHi},{cXPhi,cYPhi,cPhiPhi}} is the covariance matrix of {dX,dY,dPhi}
+#  with corresponding units (meter^2, meter*radian, radian^2).
+#  The image is not needed, since the result of the landmark detection is provided but it is included for
+#  reference.
+# 
+#  LANDMARK <pX> <pY> <quality> <cXX> <cXY> <cYY> <ID>
+#  Observation of a landmark in the image taken after the previous odometry step.
+#  {pX, pY} is the position in robot coordinates (unit meter).
+#  {{cXX, cXY}, {cXY, cYY}} is the covariance of {pX, pY}
+#  <quality> ranging from 0 (bad) to 1 (good) indicates the confidence of the computer
+#  vision landmark detector.
+ 
+STEP largemap240803e.0000.pgm  0.00088 -0.15647  0.01153 0.000016397281 -0.000000002137 0.000014026487 0.000021731727 -0.000000042656 0.000261252446
+LANDMARK -0.249545 -3.10353 0.934398 0.0017211 0.000162376 0.00376213 4
+LANDMARK 0.249545 -3.10353 0.934398 0.0017211 0.000162376 0.00376213 5
+STEP largemap240803e.0001.pgm -0.00470 -0.18707  0.06820 0.000019834605 -0.000000084074 0.000016337711 0.000028153298 -0.000000708950 0.000304450153
+LANDMARK -0.411773 -2.91275 0.798877 0.00172793 0.000217074 0.0033782 4
+LANDMARK 0.411773 -2.91275 0.798877 0.00172793 0.000217074 0.0033782 5
+STEP largemap240803e.0002.pgm -0.00460 -0.18630  0.06608 0.000019825477 -0.000000051551 0.000016250064 0.000028436344 -0.000000490011 0.000302833823
+LANDMARK -0.591105 -2.70996 0.956239 0.00174074 0.00025734 0.00304297 4
+LANDMARK 0.591105 -2.70996 0.956239 0.00174074 0.00025734 0.00304297 5

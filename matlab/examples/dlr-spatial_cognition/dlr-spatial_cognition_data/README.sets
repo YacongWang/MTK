@@ -1,0 +1,53 @@
+File format for the DLR circular fiducial SLAM dataset
+
+Each dataset has a main file with the suffix ".txt". 
+
+***********************************************************
+# odometry / image sequence
+# Created on Sun Aug 24 22:08:38 2003
+
+CIRCLEMARKDETECTOR dlr-spatial_cognition-e.cam nohalf 0.10000 0.50000
+
+STEP dlr-spatial_cognition-e.0000  0.00088 -0.15647  0.01153 0.000016397281 -0.000000002137 0.000014026487 0.000021731727 -0.000000042656 0.000261252446
+STEP dlr-spatial_cognition-e.0001 -0.00470 -0.18707  0.06820 0.000019834605 -0.000000084074 0.000016337711 0.000028153298 -0.000000708950 0.000304450153
+STEP dlr-spatial_cognition-e.0002 -0.00460 -0.18630  0.06608 0.000019825477 -0.000000051551 0.000016250064 0.000028436344 -0.000000490011 0.000302833823
+STEP dlr-spatial_cognition-e.0003 -0.01394 -0.13259  0.08844 0.000013870332 -0.000000111550 0.000012465684 0.000015862517 -0.000001098735 0.000232147433
+
+***********************************************************
+
+Lines starting with '#' as well as empty lines are comments.
+
+CIRCLEMARKDETECTOR <cameraCalibrationFile> <useHalfImages> <radius> <threshold>
+
+Defines the parameters for the circular fiducial detector. 
+   <cameraCalibrationFile> is the file containing the camera calibration 
+   with respect to the floor plane that is used for finding the fiducials 
+   and converting the image location to a metrical location. 
+
+   <useHalfImages> If it is 'half' the camera calibration refers to a full 
+   frame image and it's y resolution must be divided by two to match the images. 
+
+   <radius> metrical radius of the fiducials (meter)
+ 
+   <threshold> the visual fiducial detector assigns a quality measure between [0..1]
+   to every fiducial found. Only those above <threshold> are passed to the SLAM algorithm.
+
+
+
+STEP <image> <dX> <dY> <dTheta>, <cXX>, <cXY>, <cYY>, <cXTheta>, <cYTheta>, <cThetaTheta>
+
+Defines a single step of the robot trajectory, that is an odometry measurement plus an image. Such
+a line defines, that the robot first moved by <dX>, <dY>, <dTheta> relative to it's previous pose and
+then took the image saved in <image>. <cXX>...<cThetaTheta> are the covariances of <dX>, <dY>, <dTheta>.
+Units are m and radian.
+
+
+
+The different datasets
+
+dlr-spatial_cognition-c  short data set, where the robot crashed before the end
+dlr-spatial_cognition-d  full data set
+dlr-spatial_cognition-e  full data set, the dataset Udo used for his thesis, completly annotated, "ground truth"
+  The dataset includes the original data association 'map1_0.cirlces' and a corrected 'map1_1.circles'.
+  Acknowledgments go to Shoudong Huang for pointing out many wrong associations.
+dlr-spatial_cognition-g  full data set

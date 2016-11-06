@@ -1,0 +1,29 @@
+# This file contains metric planar odometry and landmark observations with covariance.
+#  It is derived from the original odometry / image dataset by a circular landmark detection 
+#  algorithm. The original dataset as well as calibration and landmark detection code is
+#  available upon request.
+# 
+#  Format:
+#  The robot coordinate system is located in the robot's center with -Y pointing forward and X pointing right.
+#  STEP <image.ppm> <dX> <dY> <dPhi> <cXX> <cXY> <cYY> <cXPhi> <cYPhi> <cPhiPhi>
+#  A single step of movement with odometry information.
+#  <image.ppm> is the filename of the image
+#  taken AFTER the odometry step. <dX>, <dY>, <dPhi> is the location of the robot after movement
+#  in the coordinate system of the robot before moving. Units are meter and radian.
+#  {{cXX,cXY,cXPhi},{cXY,cYY,cYPHi},{cXPhi,cYPhi,cPhiPhi}} is the covariance matrix of {dX,dY,dPhi}
+#  with corresponding units (meter^2, meter*radian, radian^2).
+#  The image is not needed, since the result of the landmark detection is provided but it is included for
+#  reference.
+# 
+#  LANDMARK <pX> <pY> <quality> <cXX> <cXY> <cYY> <ID>
+#  Observation of a landmark in the image taken after the previous odometry step.
+#  {pX, pY} is the position in robot coordinates (unit meter).
+#  {{cXX, cXY}, {cXY, cYY}} is the covariance of {pX, pY}
+#  <quality> ranging from 0 (bad) to 1 (good) indicates the confidence of the computer
+#  vision landmark detector.
+ 
+STEP largemap240803e.0000  0.00 -1  0.0 0.0001 0.00 0.0001 0.0 0.00 0.0003046
+STEP largemap240803e.0001  0.00 -1  0.0 0.0001 0.00 0.0001 0.0 0.00 0.0003046
+STEP largemap240803e.0002  0.00 -1  0.0 0.0001 0.00 0.0001 0.0 0.00 0.0003046
+STEP largemap240803e.0003  0.00 -1  0.0 0.0001 0.00 0.0001 0.0 0.00 0.0003046
+STEP largemap240803e.0004  0.00 -1  0.0 0.0001 0.00 0.0001 0.0 0.00 0.0003046

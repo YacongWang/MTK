@@ -1,0 +1,47 @@
+This directory contains python sample code to load and view the data sets.
+It's easy to understand and may be used as a foundation for your own code.
+You need to have python, numpy, scipy and pyQt4 installed.
+
+On Debian GNU/Linux this is as easy as typing:
+
+apt-get install python python-numpy python-scipy python-qt4
+
+If you have yourself programmed some loading and viewing functions
+for example in C/C++, Octave/Matlab or anything else, we would be
+happy to include your stuff here.
+
+Files:
+display.py     :  class and function to display images and landmarks with python-qt4
+importer.py    :  reads the data and provides a list of Discrete_Steps
+                  Landmark classes are also defined here
+data_viewer.py :  is the "main" program, which you run to view a certain data set
+
+Example for running data_viewer:
+sh $  python ./data_viewer.py python ../largemap240803e/map.lines
+
+This would run the "e" data set. 
+../largemap240803e/map.lines is the file where the actual data is found (line landmarks in this case)
+../largemap240803e/largemap240803e.cam is the description of the camera model
+../largemap240803e/images/ is the path where to find the images from the data set
+
+data_viewer will open a window and display the view from the robot camera.
+Depended from what you chose (lines or circles) you will see a lot yellow (almost)
+vertical lines or yellow crosses inside the white and black circles on the ground.
+You can step around with cursor keys (left and right on step forward or backward,
+up and down 10 steps)
+In the lines set the red horizontal bar visualizes the uncertainty of the line measurement.
+
+
+ADD NOISE TO DATA SET
+=====================
+
+You can add noise to the data based on the covariance. This works, right now, only
+for circular landmarks. The script "randomizer.py" takes a data set and writes
+in the same format a set with added noise. You can look a the altered data set with the
+viewer application.
+To control the gain of the noise you can provide a noise factor.
+
+Example:
+sh $ python randomizer.py ../largemap240803e/map.circles 1.2
+
+The script will write its output always to "map_distorted.(lines|circles)"

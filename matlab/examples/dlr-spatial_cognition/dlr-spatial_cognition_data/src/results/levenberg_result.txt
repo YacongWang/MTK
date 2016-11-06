@@ -1,0 +1,10 @@
+Number of Poses in State:       3298
+Number of Features in State:    576
+Number of Pose Measurements:    3298
+Number of Feature Measurements: 14309
+
+Chi Square Test:             56871.4514759
+Estimated Chi Square:  27466
+Covariance Calibration Factor:  2.07061281133
+Sigma Calibration Factor:  1.43896240789
+
