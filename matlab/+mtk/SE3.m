@@ -82,19 +82,19 @@ classdef SE3 < handle
             else
                 % A\B is roughly the same as inv(A)*B
                 r = mtk.SE3(s.pos + d(1:3), ...
-                            s.Q * mtk.util.rot(s.Q \ d(4:6)));
+                            s.Q * mtk.util.rot(d(4:6)));
             end
         end
         
         function r = minus(s2, s1)
             if ~(isa(s2, 'mtk.SE3') && isa(s1, 'mtk.SE3'))
-                s2_ = class(s2)
-                s1_ = class(s1)
+                s2_ = class(s2);
+                s1_ = class(s1);
                 error('undefined')
             else
                 % A\B is roughly the same as inv(A)*B
                 r = [s2.pos - s1.pos;
-                     s1.Q * mtk.util.arot(s1.Q \ s2.Q)];
+                      mtk.util.arot(s1.Q \ s2.Q)];
             end
         end
         

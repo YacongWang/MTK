@@ -75,7 +75,7 @@ for i=1:num_images
 end;
 
 % Calculate and print RMS
-[r J r_orig] = o.fun(X);
+[r, J, r_orig] = o.fun(X);
 
 x = r_orig(1:2:end);
 y = r_orig(2:2:end);

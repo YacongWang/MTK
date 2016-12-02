@@ -54,7 +54,7 @@ classdef OptimizationProblem < handle
     end
     
     methods
-        function [r J r_orig] = fun(obj, x)
+        function [r,J, r_orig] = fun(obj, x)
             % pre-allocate r based on total DOF
             r = zeros(obj.totaldof, 1);
             if nargout > 2
@@ -87,7 +87,7 @@ classdef OptimizationProblem < handle
                 if fixed_sigma
                     z_ = f(rvs{:}, userdata{:});
                 else
-                    [z_ sigma] = f(rvs{:}, userdata{:});
+                    [z_,sigma] = f(rvs{:}, userdata{:});
                 end
                 
                 dof = length(z);
@@ -117,7 +117,7 @@ classdef OptimizationProblem < handle
                             z2_ = f(rvs2{:}, userdata{:});
                             rk2 = mtk.normalize_innovation(z2_ - z, m{5}, fixed_sigma);
                         else
-                            [z2_ sigma2] = f(rvs2{:}, userdata{:});
+                            [z2_,sigma2] = f(rvs2{:}, userdata{:});
                             rk2 = mtk.normalize_innovation(z2_ - z, sigma2);
                         end
                         

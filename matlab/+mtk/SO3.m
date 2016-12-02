@@ -64,7 +64,7 @@ classdef SO3 < handle
                 error('undefined')
             else
                 % A\B is roughly the same as inv(A)*B
-                r = mtk.SO3(s.Q * mtk.util.rot(s.Q \ d));
+                r = mtk.SO3(s.Q * mtk.util.rot(d));
             end
         end
         
@@ -73,7 +73,7 @@ classdef SO3 < handle
                 error('undefined')
             else
                 % A\B is roughly the same as inv(A)*B
-                r = s1.Q * mtk.util.arot(s1.Q \ s2.Q);
+                r = mtk.util.arot(s1.Q \ s2.Q);
             end
         end
         

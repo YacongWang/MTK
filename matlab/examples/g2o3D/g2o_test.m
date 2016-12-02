@@ -40,4 +40,5 @@ global chisq;
 
 g2o3D('parking-garage.g2o');
 
+
 plot_3d_pose_relations(o, X, 3);
